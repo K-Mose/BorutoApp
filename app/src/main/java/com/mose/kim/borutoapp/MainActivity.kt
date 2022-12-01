@@ -14,7 +14,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.mose.kim.borutoapp.navigation.SetupNavGraph
 import com.mose.kim.borutoapp.ui.theme.BorutoAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint // hilt가 inject를 할 class임을 지정
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
