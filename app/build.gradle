@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.mose.kim.borutoapp"
         minSdk 26
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -70,10 +70,12 @@ dependencies {
     // Compose Navigation
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
-    // Room
+    // Roome
     implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-paging:$room_version"
 
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
