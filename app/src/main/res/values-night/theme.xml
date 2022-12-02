@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- dark theme -->
+    <style name="Theme.BorutoApp" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+</resources>
