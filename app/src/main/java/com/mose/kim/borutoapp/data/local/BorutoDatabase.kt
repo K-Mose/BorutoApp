@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.mose.kim.borutoapp.data.local.dao.HeroDao
+import com.mose.kim.borutoapp.data.local.dao.HeroRemoteKeyDao
 import com.mose.kim.borutoapp.domain.model.Hero
 import com.mose.kim.borutoapp.domain.model.HeroRemoteKey
 
@@ -12,5 +13,5 @@ import com.mose.kim.borutoapp.domain.model.HeroRemoteKey
 abstract class BorutoDatabase : RoomDatabase() {
 
     abstract fun heroDao(): HeroDao
-    abstract fun heroRemoteKeyDao(): HeroRemoteKey
+    abstract fun heroRemoteKeyDao(): HeroRemoteKeyDao
 }
