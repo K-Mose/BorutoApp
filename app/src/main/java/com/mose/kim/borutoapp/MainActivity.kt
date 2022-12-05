@@ -12,10 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.mose.kim.borutoapp.navigation.SetupNavGraph
 import com.mose.kim.borutoapp.ui.theme.BorutoAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+
+@ExperimentalPagerApi
 @AndroidEntryPoint // hilt가 inject를 할 class임을 지정
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
