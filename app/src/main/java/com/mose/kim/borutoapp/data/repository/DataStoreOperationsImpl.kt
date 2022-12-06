@@ -1,4 +1,4 @@
-package com.mose.kim.borutoapp.data.pref
+package com.mose.kim.borutoapp.data.repository
 
 import android.content.Context
 import androidx.datastore.core.DataStore

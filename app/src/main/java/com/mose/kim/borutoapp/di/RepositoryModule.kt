@@ -1,8 +1,12 @@
 package com.mose.kim.borutoapp.di
 
 import android.content.Context
-import com.mose.kim.borutoapp.data.pref.DataStoreOperationsImpl
+import com.mose.kim.borutoapp.data.repository.DataStoreOperationsImpl
+import com.mose.kim.borutoapp.data.repository.Repository
 import com.mose.kim.borutoapp.domain.repository.DataStoreOperations
+import com.mose.kim.borutoapp.domain.use_case.UseCase
+import com.mose.kim.borutoapp.domain.use_case.read_onboarding.ReadOnBoardingUseCase
+import com.mose.kim.borutoapp.domain.use_case.save_onboarding.SaveOnBoardingUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,5 +26,12 @@ interface RepositoryModule {
         return DataStoreOperationsImpl(context = context)
     }
 
-
+    @Provides
+    @Singleton
+    fun provideUseCase(repository: Repository): UseCase {
+        return UseCase(
+            saveOnBoardingUseCase = SaveOnBoardingUseCase(repository),
+            readOnBoardingUseCase = ReadOnBoardingUseCase(repository)
+        )
+    }
 }
