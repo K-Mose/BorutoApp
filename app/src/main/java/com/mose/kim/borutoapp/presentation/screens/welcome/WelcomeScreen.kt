@@ -121,7 +121,7 @@ fun FinishButton(
         AnimatedVisibility(
             modifier = Modifier
                 .fillMaxWidth(),
-            visible = pagerState.currentPage == 2 // page가 2일 때만
+            visible = pagerState.currentPage == Constants.LAST_ON_BOARDING_PAGE // page가 2일 때만
         ) {
             Button(
                 onClick = onClick,
