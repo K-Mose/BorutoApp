@@ -1,6 +1,9 @@
 package com.mose.kim.borutoapp.util
 
 object Constants {
+    // https://stackoverflow.com/a/34732276
+    const val BASE_URL = "http://10.0.2.2:8080"
+
     const val DETAILS_AGRUMENT_KEY = "heroId"
 
     const val BORUTO_DATABASE = "boruto_database"
