@@ -51,7 +51,7 @@ class HeroRemoteMediator @Inject constructor(
         }
         return try {
             // request to server
-            val response = borutoApi.getAllHeros(page = page)
+            val response = borutoApi.getAllHeroes(page = page)
             if(response.heroes.isNotEmpty()) {
                 borutoDatabase.withTransaction {
                     // loadType의 따른 데이터베이스 설정
