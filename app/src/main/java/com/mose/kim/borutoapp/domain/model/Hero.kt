@@ -19,5 +19,5 @@ data class Hero(
     val day: String,
     val family: List<String>,
     val abilities: List<String>,
-    val natureType: List<String>
+    val natureTypes: List<String>
 )
