@@ -6,12 +6,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.mose.kim.borutoapp.presentation.common.ListContent
 import com.mose.kim.borutoapp.presentation.components.RatingWidget
 import com.mose.kim.borutoapp.ui.theme.EXTRA_LARGE_PADDING
 
 @Composable
 fun HomeScreen(
+    navController: NavHostController,
     homeViewModel: HomeViewModel = hiltViewModel()
 ) {
     val allHeroes = homeViewModel
@@ -25,6 +28,9 @@ fun HomeScreen(
         }
     ) {
         it
-        RatingWidget(modifier = Modifier.padding(all = EXTRA_LARGE_PADDING), rating = 3.2)
+        ListContent(
+            heroes = allHeroes,
+            navController = navController
+        )
     }
 }
