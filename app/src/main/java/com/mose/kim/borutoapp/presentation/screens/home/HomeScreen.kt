@@ -27,7 +27,6 @@ fun HomeScreen(
             HomeTopBar (onSearchClicked = {})
         }
     ) {
-        it
         ListContent(
             heroes = allHeroes,
             navController = navController

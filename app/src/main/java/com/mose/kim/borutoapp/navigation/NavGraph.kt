@@ -16,7 +16,7 @@ import com.mose.kim.borutoapp.util.Constants
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(navController = navController,
-    startDestination = Screen.Welcome.route
+    startDestination = Screen.Splash.route
     ) {
         composable(route = Screen.Splash.route) {
             SplashScreen(navController = navController)

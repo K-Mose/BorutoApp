@@ -1,9 +1,11 @@
 package com.mose.kim.borutoapp.presentation.common
 
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -20,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.items
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberAsyncImagePainter
 //import coil.compose.rememberImagePainter
@@ -31,13 +34,28 @@ import com.mose.kim.borutoapp.presentation.components.RatingWidget
 import com.mose.kim.borutoapp.ui.theme.*
 import com.mose.kim.borutoapp.util.Constants.BASE_URL
 
+@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun ListContent(
     heroes: LazyPagingItems<Hero>,
     navController: NavHostController
 ) {
-    heroes.itemCount
-    navController.context
+    Log.d("LIST_CONTENT::", heroes.loadState.toString())
+    LazyColumn(
+        contentPadding = PaddingValues(all = SMALL_PADDING),
+        verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
+    ) {
+        items(
+            items = heroes,
+            key = { hero ->
+                hero.id
+            }
+        ) { hero ->
+            hero?.let {
+                HeroItem(hero = it, navController = navController)
+            }
+        }
+    }
 }
 
 @ExperimentalCoilApi
@@ -68,7 +86,7 @@ fun HeroItem(
         contentAlignment = Alignment.BottomStart
     ) {
         // 배경 이미지
-        Surface(shape = Shapes.large) {
+        Surface(shape = RoundedCornerShape(size = LARGE_PADDING)) {
             Image(
                 modifier = Modifier.fillMaxSize(),
                 painter = painter,
@@ -93,7 +111,7 @@ fun HeroItem(
             ) {
                 Text(
                     text = hero.name,
-                    color = MaterialTheme.colors.titleColor,
+                    color = MaterialTheme.colors.topAppBarContentColor,
                     fontSize = MaterialTheme.typography.h5.fontSize,
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
@@ -133,16 +151,74 @@ private fun HeroItemPreview() {
     HeroItem(
         hero = Hero(
             id = 1,
-            name = "NAME",
-            image = "",
-            about = "about something else",
-            rating = 4.2,
-            power = 99,
-            month = "",
-            day = "",
-            family = listOf(),
-            abilities = listOf(),
-            natureType = listOf()
+            name = "Sasuke",
+            image = "/images/sasuke.jpg",
+            about = "Sasuke Uchiha (うちはサスケ, Uchiha Sasuke) is one of the last surviving members of Konohagakure's Uchiha clan. After his older brother, Itachi, slaughtered their clan, Sasuke made it his mission in life to avenge them by killing Itachi. He is added to Team 7 upon becoming a ninja and, through competition with his rival and best friend, Naruto Uzumaki.",
+            rating = 5.0,
+            power = 98,
+            month = "July",
+            day = "23rd",
+            family = listOf(
+                "Fugaku",
+                "Mikoto",
+                "Itachi",
+                "Sarada",
+                "Sakura"
+            ),
+            abilities = listOf(
+                "Sharingan",
+                "Rinnegan",
+                "Sussano",
+                "Amateratsu",
+                "Intelligence"
+            ),
+            natureTypes = listOf(
+                "Lightning",
+                "Fire",
+                "Wind",
+                "Earth",
+                "Water"
+            )
+        ),
+        navController = rememberNavController()
+    )
+}
+
+@ExperimentalCoilApi
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun HeroItemDarkPreview() {
+    HeroItem(
+        hero = Hero(
+            id = 1,
+            name = "Sasuke",
+            image = "/images/sasuke.jpg",
+            about = "Sasuke Uchiha (うちはサスケ, Uchiha Sasuke) is one of the last surviving members of Konohagakure's Uchiha clan. After his older brother, Itachi, slaughtered their clan, Sasuke made it his mission in life to avenge them by killing Itachi. He is added to Team 7 upon becoming a ninja and, through competition with his rival and best friend, Naruto Uzumaki.",
+            rating = 5.0,
+            power = 98,
+            month = "July",
+            day = "23rd",
+            family = listOf(
+                "Fugaku",
+                "Mikoto",
+                "Itachi",
+                "Sarada",
+                "Sakura"
+            ),
+            abilities = listOf(
+                "Sharingan",
+                "Rinnegan",
+                "Sussano",
+                "Amateratsu",
+                "Intelligence"
+            ),
+            natureTypes = listOf(
+                "Lightning",
+                "Fire",
+                "Wind",
+                "Earth",
+                "Water"
+            )
         ),
         navController = rememberNavController()
     )
