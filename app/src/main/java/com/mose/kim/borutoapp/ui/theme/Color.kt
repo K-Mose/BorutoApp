@@ -13,6 +13,11 @@ val LightGray = Color(0xFFD8D8D8)
 val DarkGray = Color(0xFF2A2A2A)
 val StarColor = Color(0xFFFFC940)
 
+val ShimmerLightGray = Color(0xFFF1F1F1)
+val ShimmerMediumGray = Color(0xFFE3EE3)
+val ShimmerDarkGray = Color(0xFFF1D1D1D)
+
+// Extension Property로 컬러 생성
 val Colors.welcomeScreenBackgroundColor
     @Composable
     get() = if(isLight) Color.White else Color.Black
