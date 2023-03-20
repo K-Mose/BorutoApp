@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -17,6 +18,14 @@ import com.mose.kim.borutoapp.ui.theme.*
 @Composable
 fun ShimmerEffect() {
     // 페이지 로딩중에 빈 아이템 공간 속에서 표시되는 애니메이션
+    LazyColumn(
+        contentPadding = PaddingValues(all = SMALL_PADDING),
+        verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
+    ) {
+        items(count = 2) {
+            AnimatedShimmerItem()
+        }
+    }
 }
 
 @Composable
