@@ -77,7 +77,7 @@ fun ShimmerEffectItem(alpha: Float) {
                     modifier = Modifier
                         .alpha(alpha = alpha)
                         .fillMaxWidth()
-                        .height(NAME_PLACEHOLDER_HEIGHT),
+                        .height(ABOUT_PLACEHOLDER_HEIGHT),
                     color = if (isSystemInDarkTheme())
                         ShimmerDarkGray else ShimmerMediumGray,
                     shape = RoundedCornerShape(size = MEDIUM_PADDING)
